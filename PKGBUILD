@@ -1,7 +1,7 @@
 _pkgbase=legion-y9000x-2022-iah7-sound-fix
 pkgname=${_pkgbase}-dkms
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DKMS package to fix internal speakers for Legion Y9000X 2022 IAH7 (which has cs35l41 amps identified as 17AA386E)"
 arch=(any)
 url="https://alampy.com/2024/04/19/use-dkms-to-patch-linux-kernel-mod/"

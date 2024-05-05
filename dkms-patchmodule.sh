@@ -2,7 +2,12 @@
 
 DRIVER_PATH=$1
 
-kernel_version=$(cat /proc/version | cut -d " " -f 3)
+if [ -z "$kernelver" ]; then
+    echo "No kernel version specified, using current kernel version"
+    kernel_version=$(cat /proc/version | cut -d " " -f 3)
+else
+    kernel_version=$kernelver
+fi
 vers=${kernel_version//-/ }
 vers=${vers//./ }
 vers=($vers)
