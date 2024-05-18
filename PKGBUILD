@@ -1,7 +1,7 @@
 _pkgbase=legion-y9000x-2022-iah7-sound-fix
 pkgname=${_pkgbase}-dkms
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="DKMS package to fix internal speakers for Legion Y9000X 2022 IAH7 (which has cs35l41 amps identified as 17AA386E)"
 arch=(any)
 url="https://alampy.com/2024/04/19/use-dkms-to-patch-linux-kernel-mod/"
@@ -11,12 +11,12 @@ makedepends=()
 
 source=('dkms-patchmodule.sh'
         'dkms.conf'
-        'v3-1-2-ALSA-cs35l41-obey-the-trigger-type-from-DSDT.patch::https://patchwork.kernel.org/project/alsa-devel/patch/TYCP286MB253538FE76C93C032DB55212C40E2@TYCP286MB2535.JPNP286.PROD.OUTLOOK.COM/raw/'
-        'v3-2-2-ALSA-hda-realtek-Fix-internal-speakers-for-Legion-Y9000X-2022-IAH7.patch::https://patchwork.kernel.org/project/alsa-devel/patch/TYCP286MB25359B61BB685A4B3110BB44C40E2@TYCP286MB2535.JPNP286.PROD.OUTLOOK.COM/raw')
+        'ignore_irqs_error.patch::https://github.com/torvalds/linux/commit/762eba7096e3d4d81faefffcc57074a82b53613d.patch'
+        '17aa_386e_quirk.patch::https://github.com/torvalds/linux/commit/318555454100fe64ae8b82866c904f2880829e19.patch')
 sha256sums=('SKIP'
             'SKIP'
-            '880a2ead1f744dd71b64188e964164be1fd8c40122adc5f726e9e49797a0bf3f'
-            'e5b237c9ad9662684586a9ed52f7938486055d334072ad79534059de43cc803f')
+            '9f222a486f8c2fb5068f5408268dd2bebd884415fbcbf16d6610aa99e390c8a5'
+            '42dfc65267382d7515b9208fd7cc0e030a2baf3fc87b905c51b13ca8c57f6a1b')
 
 package() {
     install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
